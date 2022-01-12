@@ -1,0 +1,18 @@
+{
+  "name": "prix-cli",
+  "version": "1.0.0",
+  "description": "A cli tool that integrates many modern front-end solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "front-end",
+    "cli",
+    "react",
+    "typescript",
+    "scss"
+  ],
+  "author": "deli",
+  "license": "MIT"
+}
