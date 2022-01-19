@@ -18,6 +18,7 @@
     "chalk": "^4.1.0",
     "commander": "^8.3.0",
     "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
     "minimist": "^1.2.5",
     "validate-npm-package-name": "^3.0.0"
   },
