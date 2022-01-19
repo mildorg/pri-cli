@@ -1,8 +1,7 @@
 {
-  "name": "prix-cli",
-  "version": "1.0.1",
+  "name": "pri-cli",
+  "version": "1.0.0",
   "description": "A cli tool that integrates many modern front-end solutions",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,14 +15,17 @@
   "author": "deli",
   "license": "MIT",
   "dependencies": {
-    "co": "^4.6.0",
-    "co-prompt": "^1.0.0",
-    "commander": "^8.3.0"
+    "chalk": "^4.1.0",
+    "commander": "^8.3.0",
+    "fs-extra": "^10.0.0",
+    "minimist": "^1.2.5",
+    "validate-npm-package-name": "^3.0.0"
   },
   "bin": {
-    "prix": "bin/prix"
+    "pri": "./bin/pri.js"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.16.5",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.5.1"
