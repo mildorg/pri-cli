@@ -4,7 +4,7 @@ const { Command } = require('commander');
 const minimist = require('minimist');
 const chalk = require('chalk');
 const { version } = require('../package.json');
-const { create } = require('../lib');
+const { create } = require('../lib/create');
 
 // 获取package.version
 const program = new Command();
