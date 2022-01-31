@@ -20,9 +20,9 @@ program.version(
 // 定义创建项目的create命令
 program
   .command('create <app-name>')
+  .alias('c')
   .description('Create a new pri project.')
   .option('-f, --force', 'Overwrite target directory if it exists')
-  .alias('c')
   .action((name, options) => {
     if (minimist(process.argv.slice(3))._.length > 1) {
       const info = `Info: You provided more than one argument. The first one will be used as the app's name, the rest are ignored. `;

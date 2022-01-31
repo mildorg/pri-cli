@@ -3,6 +3,9 @@
     "node": true,
     "commonjs": true
   },
+  "globals": {
+    "Promise": true
+  },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2015,
