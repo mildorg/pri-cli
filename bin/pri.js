@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict';
 const { Command } = require('commander');
 const minimist = require('minimist');
@@ -11,11 +12,7 @@ const program = new Command();
 const { log } = console;
 
 // 定义当前版本
-program.version(
-  `pri: ${version}`,
-  '-v, --version',
-  'output the current prix version'
-);
+program.version(`pri: ${version}`, '-v, --version', 'output the current prix version');
 
 // 定义创建项目的create命令
 program

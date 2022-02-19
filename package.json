@@ -5,6 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "pri": "./bin/pri.js"
+  },
   "keywords": [
     "front-end",
     "cli",
@@ -20,13 +23,13 @@
     "deepmerge": "^4.2.2",
     "execa": "^5.1.0",
     "fs-extra": "^10.0.0",
+    "globby": "^10.0.0",
+    "handlebars": "^4.7.7",
     "inquirer": "^8.2.0",
+    "is-binary-path": "^2.1.0",
     "minimist": "^1.2.5",
     "semver": "^7.3.5",
     "validate-npm-package-name": "^3.0.0"
-  },
-  "bin": {
-    "pri": "./bin/pri.js"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.5",
