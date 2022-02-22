@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A cli tool that integrates many modern front-end solutions",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext .js --fix bin && eslint --ext .js --fix lib"
   },
   "bin": {
     "pri": "./bin/pri.js"
@@ -34,7 +34,11 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.5",
     "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
     "prettier": "^2.5.1"
   }
 }

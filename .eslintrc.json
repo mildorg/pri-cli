@@ -3,20 +3,21 @@
     "node": true,
     "commonjs": true
   },
-  "globals": {
-    "Promise": true,
-    "Set": true
-  },
+  "extends": ["airbnb", "prettier"],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2015,
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "requireConfigFile": false
   },
-  "extends": ["eslint:recommended", "prettier"],
+
   "rules": {
     "semi": ["error", "always"],
     "quotes": "off",
     "no-console": "off",
-    "no-redeclare": "warn"
+    "no-redeclare": "warn",
+    "import/no-unresolved": "off"
   }
 }
