@@ -1,10 +1,10 @@
-const { loadFeatures } = require('./features');
+const { loadTemplates } = require('./features');
 const { extractConfigFiles, getSortPkg, mergePackageJSON, writeFiles } = require('../utils');
 
 const getFilesAndPkg = async (targetDir, options) => {
   const { features = [], files = {}, pkg = {} } = options;
   const initPkg = { ...pkg };
-  const { pkg: featuresPkg, ...rest } = await loadFeatures(features, targetDir);
+  const { pkg: featuresPkg, ...rest } = await loadTemplates(features, targetDir);
 
   if (featuresPkg) {
     mergePackageJSON(initPkg, featuresPkg);

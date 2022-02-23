@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A cli tool that integrates many modern front-end solutions",
   "scripts": {
-    "lint": "eslint --ext .js --fix bin && eslint --ext .js --fix lib"
+    "lint": "eslint --ext .js --fix bin && eslint --ext .js --fix src"
   },
   "bin": {
     "pri": "./bin/pri.js"

@@ -71,19 +71,26 @@ const getResolvePath = (feature, context) => {
  * @param {string[]} features - An array of strings that represent the features to load.
  * @param {string} targetDir - The directory where the feature modules are located.
  */
-const loadFeatures = async (features, targetDir) => {
+const loadTemplates = async (features, targetDir) => {
+  const promises = [];
   let result = { pkg: {} };
 
   for (let i = 0, len = features.length; i < len; i += 1) {
     const resolvePath = getResolvePath(features[i], targetDir);
     if (resolvePath) {
-      const { pkg, ...rest } = await require(resolvePath)();
-      if (pkg) mergePackageJSON(result.pkg, pkg);
-      if (rest) result = { ...result, ...rest };
+      // eslint-disable-next-line import/no-dynamic-require, global-require
+      promises.push(require(resolvePath)());
     }
   }
+
+  const templates = await Promise.all(promises);
+
+  templates.forEach(({ pkg, ...rest }) => {
+    if (pkg) mergePackageJSON(result.pkg, pkg);
+    if (rest) result = { ...result, ...rest };
+  });
 
   return result;
 };
 
-module.exports = { featuresPrompt, loadFeatures };
+module.exports = { featuresPrompt, loadTemplates };

@@ -25,6 +25,7 @@ const getEslintConfig = () => ({
     'no-shadow': 'off',
     'no-console': 'warn',
     'no-debugger': 'warn',
+    'import/prefer-default-export': 'off',
     'react-hooks/rules-of-hooks': 'error', // Check Hook's rules
     'react-hooks/exhaustive-deps': 'warn', // Check the dependencies of effect
   },
@@ -45,7 +46,7 @@ const getPrettierConfig = () => ({
 const invokeLinter = () => {
   const pkg = {
     scripts: {
-      lint: 'eslint --ext .js --fix src',
+      lint: 'eslint --ext .js,.jsx --fix src',
     },
 
     [configFiles.linter.eslint]: getEslintConfig(),

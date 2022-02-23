@@ -54,17 +54,20 @@ const renderFile = async (filePath) => {
  * @returns {Promise<{[p:string]:string}>} A dictionary of file names and their contents.
  */
 async function getFilesFormDir(dir) {
-  const result = {};
+  const promises = [];
   const cwd = path.resolve(dir, 'template');
   const files = await globby(['**/*'], { cwd });
 
   for (let i = 0, len = files.length; i < len; i += 1) {
     const file = files[i];
     const targetPath = path.resolve(cwd, file);
-    result[file] = await renderFile(targetPath);
+    promises.push(renderFile(targetPath));
   }
 
-  return result;
+  return (await Promise.all(promises)).reduce((acc, cur, i) => {
+    acc[files[i]] = cur;
+    return acc;
+  }, {});
 }
 
 function hasGit() {

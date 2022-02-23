@@ -1,5 +1,5 @@
 const execa = require('execa');
-const { createTemplate, featuresPrompt } = require('./features');
+const { createTemplate, featuresPrompt } = require('./templates');
 const { clearConsole, emojis, logInfos, writeFiles, hasGit, runCommand } = require('./utils');
 
 const getPackageJson = (name) => ({
