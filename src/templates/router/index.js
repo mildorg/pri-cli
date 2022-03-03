@@ -7,7 +7,7 @@ async function invokeRouter() {
     ...routerTemplate,
     pkg: {
       dependencies: {
-        'react-router': '^6.2.1',
+        'react-router-dom': '^6.2.1',
       },
     },
   };

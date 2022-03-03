@@ -1,8 +1,7 @@
 const chalk = require('chalk');
-const path = require('path');
 const { prompt } = require('inquirer');
 const { featuresEnum } = require('../constants');
-const { mergePackageJSON } = require('../utils');
+const { hasReactFeature, hasRouterFeature, logWarnings } = require('../utils');
 
 const react = {
   name: 'React',
@@ -30,9 +29,25 @@ const linter = {
 };
 
 /**
+ * @param {string[]} features
+ */
+const getFormatFeatures = (features) => {
+  const result = features.flat();
+  const hasReact = hasReactFeature(features);
+  const hasRouter = hasRouterFeature(features);
+
+  if (hasRouter && !hasReact) {
+    logWarnings(['If React router is selected, React feature needs to be selected']);
+    result.push(featuresEnum.react);
+  }
+
+  return result;
+};
+
+/**
  * @returns {Promise<string[]>}
  */
-async function featuresPrompt() {
+const featuresPrompt = async () => {
   const { features = [] } = await prompt([
     {
       choices: [react, reactRouter, linter],
@@ -43,54 +58,7 @@ async function featuresPrompt() {
     },
   ]);
 
-  return features.flat();
-}
-
-/**
- *
- * @param {string} feature
- * @param {string} context
- * @returns
- */
-const getResolvePath = (feature, context) => {
-  try {
-    const template = path.resolve(__dirname, feature);
-    return require.resolve(template, { paths: [context] });
-  } catch (error) {
-    return '';
-  }
+  return getFormatFeatures(features.flat());
 };
 
-/**
- * @description 根据选择的features 加载模块
- * @param {string[]} features
- * @param {string} targetDir
- */
-/**
- * Loads the specified features and returns a dictionary of the fields they define
- * @param {string[]} features - An array of strings that represent the features to load.
- * @param {string} targetDir - The directory where the feature modules are located.
- */
-const loadTemplates = async (features, targetDir) => {
-  const promises = [];
-  let result = { pkg: {} };
-
-  for (let i = 0, len = features.length; i < len; i += 1) {
-    const resolvePath = getResolvePath(features[i], targetDir);
-    if (resolvePath) {
-      // eslint-disable-next-line import/no-dynamic-require, global-require
-      promises.push(require(resolvePath)());
-    }
-  }
-
-  const templates = await Promise.all(promises);
-
-  templates.forEach(({ pkg, ...rest }) => {
-    if (pkg) mergePackageJSON(result.pkg, pkg);
-    if (rest) result = { ...result, ...rest };
-  });
-
-  return result;
-};
-
-module.exports = { featuresPrompt, loadTemplates };
+module.exports = { featuresPrompt };

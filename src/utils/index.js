@@ -3,6 +3,7 @@ const errorCatch = require('./errorCatch');
 const file = require('./file');
 const logger = require('./logger');
 const pkg = require('./pkg');
+const templates = require('./templates');
 
 module.exports = {
   ...base,
@@ -10,4 +11,5 @@ module.exports = {
   ...file,
   ...logger,
   ...pkg,
+  ...templates,
 };

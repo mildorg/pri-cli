@@ -3,8 +3,9 @@ const path = require('path');
 const chalk = require('chalk');
 const { prompt } = require('inquirer');
 const validateNpmPackageName = require('validate-npm-package-name');
+const { emojis } = require('./constants');
 const { createProject } = require('./createProject');
-const { asyncCatchErrorHof, clearConsole, emojis, logInfos, logWarnings, logErrors } = require('./utils');
+const { asyncCatchErrorHof, clearConsole, logInfos, logWarnings, logErrors } = require('./utils');
 
 const actionEnum = {
   Overwrite: 2,
@@ -29,7 +30,7 @@ const createInSubDir = async (targetDir) => {
   if (!action || action === actionEnum.Cancel) return false;
 
   if (action === actionEnum.Overwrite) {
-    logInfos([`Removing ${targetDir}`]);
+    logInfos([`Removing ${targetDir}\n`], `${emojis.finger}`);
     await fs.remove(targetDir);
   }
 

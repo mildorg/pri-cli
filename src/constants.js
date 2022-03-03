@@ -1,3 +1,11 @@
+const emojis = {
+  error: '❌',
+  recycle: '♻️ ',
+  finger: '👉',
+  star: '✨',
+  warn: '⚠️',
+};
+
 const featuresEnum = {
   react: ['react', 'webpack'],
   reactRouter: 'router',
@@ -17,4 +25,4 @@ const configFileTypes = {
   [featuresEnum.configFiles.linter.prettier]: '.prettierrc',
 };
 
-module.exports = { featuresEnum, configFileTypes };
+module.exports = { emojis, featuresEnum, configFileTypes };

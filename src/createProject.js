@@ -1,6 +1,7 @@
 const execa = require('execa');
+const { emojis } = require('./constants');
 const { createTemplate, featuresPrompt } = require('./templates');
-const { clearConsole, emojis, logInfos, writeFiles, hasGit, runCommand } = require('./utils');
+const { logInfos, writeFiles, hasGit, runCommand } = require('./utils');
 
 const getPackageJson = (name) => ({
   name,
@@ -10,8 +11,8 @@ const getPackageJson = (name) => ({
 });
 
 const startLog = (name, targetDir) => {
-  clearConsole();
-  logInfos([`Creating project: ${name} in ${targetDir}`], emojis.star);
+  // clearConsole();
+  logInfos([`Creating project: ${name} in ${targetDir}`], `\n${emojis.star}`);
 };
 
 /**

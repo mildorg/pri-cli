@@ -1,13 +1,6 @@
 const chalk = require('chalk');
 const readline = require('readline');
 
-const emojis = {
-  error: '❌',
-  recycle: '♻️ ',
-  star: '✨',
-  warn: '⚠️',
-};
-
 /**
  * @param {string[]|undefined} infos
  * @param {string} dim
@@ -62,7 +55,6 @@ function clearConsole(msg) {
 
 module.exports = {
   clearConsole,
-  emojis,
   logInfos,
   logErrors,
   logWarnings,

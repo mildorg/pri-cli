@@ -53,7 +53,7 @@ module.exports = {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         loader: require.resolve('babel-loader'),
         options: {
-          presets: [require.resolve('babel-preset-react-app')],
+          presets: [[require.resolve('babel-preset-react-app'), { runtime: 'automatic' }]],
         },
         exclude: [/node_modules/],
       },
@@ -76,7 +76,11 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    // path alias
+    alias: {
+      '@': path.resolve(__dirname, '../src/'),
+    },
   },
 
   plugins: [
