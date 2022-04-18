@@ -13,6 +13,7 @@ async function invokeWebPack() {
       devDependencies: {
         webpack: '^5.69.1',
         '@babel/core': '^7.15.5',
+        '@babel/preset-env': '^7.16.11',
         'babel-loader': '^8.2.3',
         'babel-preset-react-app': '^10.0.1',
         'css-loader': '^6.6.0',

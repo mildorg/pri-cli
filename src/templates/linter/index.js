@@ -33,7 +33,7 @@ const getEslintConfig = ({ hasReact }) => {
     plugins,
     parser: '@babel/eslint-parser',
     parserOptions: {
-      babelOptions: { presets: ['react-app'] },
+      babelOptions: { presets: ['@babel/preset-react'] },
       ecmaVersion: 2015,
       ecmaFeatures: { jsx: true },
       requireConfigFile: false,
@@ -43,6 +43,8 @@ const getEslintConfig = ({ hasReact }) => {
       'no-console': 'warn',
       'no-debugger': 'warn',
       'import/prefer-default-export': 'off',
+      'import/no-unresolved': [2, { ignore: ['^@/'] }],
+      'import/extensions': ['error', 'never', { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' }],
       ...rules,
     },
     settings,
